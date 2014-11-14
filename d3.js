@@ -8656,12 +8656,10 @@
         text.append(function(d, i) {
         	var docFragment = document.createDocumentFragment();
         	var tickFormatTspansArr;
-        	//if (typeof tickFormatTspans === "function") { 
-        	var tspan;
         	if (typeof tickFormatTspans === "function" &&
         		Object.prototype.toString.call(tickFormatTspansArr = tickFormatTspans(d)) === '[object Array]') {
               	tickFormatTspansArr.forEach(function(element, index, array) {
-              		tspan = document.createElementNS(d3.ns.prefix.svg, "tspan");
+              		var tspan = document.createElementNS(d3.ns.prefix.svg, "tspan");
               		tspan.textContent = element.format;
                 	if (element.styles) {
                   		var style = '';
