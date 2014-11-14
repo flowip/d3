@@ -8655,9 +8655,11 @@
         text.text("");
         text.append(function(d, i) {
         	var docFragment = document.createDocumentFragment();
-        	tickFormatTspansArr = tickFormatTspans(d);
+        	var tickFormatTspansArr;
+        	//if (typeof tickFormatTspans === "function") { 
         	var tspan;
-        	if (Object.prototype.toString.call(tickFormatTspansArr) === '[object Array]') {
+        	if (typeof tickFormatTspans === "function" &&
+        		Object.prototype.toString.call(tickFormatTspansArr = tickFormatTspans(d)) === '[object Array]') {
               	tickFormatTspansArr.forEach(function(element, index, array) {
               		tspan = document.createElementNS(d3.ns.prefix.svg, "tspan");
               		tspan.textContent = element.format;
